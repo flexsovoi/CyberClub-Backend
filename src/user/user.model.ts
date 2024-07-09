@@ -11,18 +11,17 @@ interface UserCreationAttrs {
 @Table({ tableName: 'users' })
 export class User extends Model<User, UserCreationAttrs> {
   @Column({
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true,
-    unique: true,
+    defaultValue: DataTypes.UUIDV4,
   })
-  id: number;
-  @Column({ type: DataTypes.STRING, unique: true })
+  id: string;
+  @Column({ type: DataTypes.STRING, unique: true, allowNull: false })
   email: string;
-  @Column({ type: DataTypes.STRING })
+  @Column({ type: DataTypes.STRING, allowNull: false })
   name: string;
-  @Column({ type: DataTypes.STRING })
+  @Column({ type: DataTypes.STRING, allowNull: false })
   lastName: string;
-  @Column({ type: DataTypes.STRING })
+  @Column({ type: DataTypes.STRING, allowNull: false })
   password: string;
 }

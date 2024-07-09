@@ -15,4 +15,8 @@ export class UserService {
     const user = await this.userRepository.findOne({ where: { email } });
     return user;
   }
+  async getUsers() {
+    const users = await this.userRepository.findAll();
+    return users;
+  }
 }
